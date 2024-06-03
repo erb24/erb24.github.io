@@ -1,0 +1,99 @@
+<HTML>
+<head>
+	<style>
+		figure {
+		    border: thin #c0c0c0 solid;
+		    display: flex;
+		    flex-flow: column;
+		    padding: 5px;
+		    max-width: 1010px;
+		    max-height: 610px;
+		    margin: auto;
+		}
+
+		.image1 {
+		    border: thin #c0c0c0 solid;
+		    display: flex;
+		    flex-flow: column;
+		    padding: 5px;
+		    max-width: 1010px;
+		    max-height: 610px;
+		    margin: auto;
+		}
+
+		.image2 {
+		    border: thin #c0c0c0 solid;
+		    display: flex;
+		    flex-flow: column;
+		    padding: 5px;
+		    max-width: 810px;
+		    max-height: 410px;
+		    margin: auto;
+		}
+
+		img {
+		    max-width: 1000px;
+		    max-height: 600px;
+		}
+
+		figcaption {
+		    background-color: #222;
+		    color: #fff;
+		    font: italic smaller sans-serif;
+		    padding: 3px;
+		    text-align: center;
+		}
+
+	</style>
+	<title>Research?</title>
+</head>
+<h1>
+	Some Research Topics
+</h1>
+<body style='margin-top:0;margin-left:200;margin-right:200;'>
+<h2>Equilibrium Dynamics of Proteins</h2>
+I was a PhD student in <a target="_blank" rel="noopener noreferrer" href="https://guenzalab.uoregon.edu/">Marina Guenza's lab</a> at the University of Oregon (UO) from 2015-2021, following my graduation from Centre College with a bachelor's degree in chemical physics. While at the UO, my research focused mostly on extending a previously developed method in the group called the <a href="https://pubs.acs.org/doi/full/10.1021/jp509473z">Langevin Equation for Protein Dynamics</a> for analyzing the equilibrium dynamics of proteins in physiological conditions. I would say that a big focus of my PhD focused on developing an <a href="https://aip.scitation.org/doi/abs/10.1063/5.0041211">anisotropic version of the LE4PD</a> that, under specific conditions, is analytically mappable onto the <a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/prot.340170408">essential dynamics method</a>, otherwise known as <a href="http://cda.psych.uiuc.edu/statistical_learning_course/Jolliffe%20I.%20Principal%20Component%20Analysis%20(2ed.,%20Springer,%202002)(518s)_MVsa_.pdf">principal component analysis (PCA)</a> on the alpha-carbon degrees of freedom of the protein. I specifically focused on the equilibrium dynamics of the protein ubiquitin, which is a small (76 residue) protein whose primary sequence is highly conserved evolutionarily. Ubiquitin functions in the cell as a post-translational modification that, depending on how it is covalently attached to the target protein, can cause various degrees of regulation, the most infamous of which is indicating the targeted protein for degradation by the proteasome.<br><br>
+<p> Fundamentally, the LE4PD is a modified Rouse-Zimm approach to modeling protein dynamics that accounts for residue-specific friction coefficients, long-ranged hydrodynamic interactions between residues in the protein, and a protein-specific potential of mean force between residues that is built using informaton from atomistic molecular dynamics simulations. The coupled equations of motion for the coarse-grained sites (the alpha-carbons) in real space are subject to a linear transformation to yield a set of uncoupled equations of motion in a mode space of the same dimensionality, although typically the first ten or modes are those where most of the focus is applied, as they correspond to the most slowly decaying modes in the system. However, the behavior of all the modes must be taken into account accurately to describe faithfully e.g. time correlation functions where the dynamics are mapped back to the real space from the mode space. But performing a functional analysis of the dynamics in the mode space is absolutely critical for interpreting the functional behavior of the protein.<br><br>
+<p> Fundamentally, in the mode space, as well as in the real space, the equation of motion of the modes is governed by an overdamped Langevin equation, where the force acting on each mode or bead is dictated by a combination the hydrodynamics and the correlations between the bond vectors defined between adjacent beads in the protein. Overall, the interactions between the beads in the protein are modelled as entropic springs with the beads also subject to the random impacts of the solvent governed by the random noise term in the Langevin equation and the associated fluctuation dissipation theorem.<br><br>
+<p>However, since the model is both coarse-grained at the alpha-carbon level and the springs between beads are assumed to be harmonic, we must account for free-energy barriers along the mode coordinates in some manner if we want to correctly account for the timescales of the important dynamics of the protein. To take account of barriers, we take inspiration from <a href="https://www.pnas.org/doi/10.1073/pnas.85.7.2029">Zwanzig's diffusion in a rough protential model</a> and calculate the relevant free-energy barrier along each mode, using it to effectively renormalize the diffusion coefficient along that mode. Previously, the barriers were found by approximating a characteristic roughness of the free-erngy surface. I took a slightly more precise approach by approximately the slowest dynamics on the first ten modes of ubiquitin using a discrete-state kinetic model known as a <a href="https://aip.scitation.org/doi/full/10.1063/1.2714539">Markov state model (MSM)</a>. We assume that the slowest modes in the system are slow enough to be ammenable to the MSM formulation and that all faster modes, since they cannot be described using the MSM approach, do not possess metastable minima, and, hence, their free-energy landscapes are merely rough, without any significant energy barriers impeding transport. Since the landscapes for the faster modes are merely rough, we can use the previous heuristic for these modes while treating the kinetics of the slow modes carefully through the MSM construction. This approach allowed for a better interpretation of the slow moded space, and we are able to postulate <a href="https://aip.scitation.org/doi/abs/10.1063/1.5123513">how these slow mode dynamics are related to the functional dynamics of ubiquitin.</a>
+<figure>
+	<img src="images/ubiquitin_dynamics.png" alt="Visualization of the dynamics and timescales of the slowest four modes of ubiquitin discovered through the LE4PD-MSM analysis technique, along with the biological relevance of each of the regions of ubiquitin involved in the slow dynamics." class="image1" height="600" width="1000"/>
+	<figcaption>Figure 1. Visualization of the dynamics and timescales of the slowest four modes of ubiquitin discovered through the LE4PD-MSM analysis technique, along with the biological relevance of each of the regions of ubiquitin involved in the slow dynamics. Maybe, one day in the future, I will improve the quality of this figure, but it seems unlikely that day will come.</figcaption>
+</figure>
+<br><br>
+<p> This MSM technique can also be combined with the anisotropic version of the LE4PD mentioned above to create <a href="https://aip.scitation.org/doi/abs/10.1063/5.0041211">the LE4PD-3N approach to modelling protein dynamics</a>. With the LE4PD-3N, we shift from the simulation box frame of reference to the body-centered frame of reference, which removes rotational and translational motions from the system, yielding a set of 3N-6 internal modes of motion. As with the isotropic LE4PD, once rescaling due to the free-energy barriers along each of the mode coordinates, the lowest index modes give the slowest internal dynamics of the protein. Due to the analytical mapping onto the PCA in alpha-carbon coordinates, we are able to show the importance of hydrodynamic effects and free-energy barriers to the predicted slow dynamical motions of the proteins, including the improved ability of the LE4PD-3N to reproduce the simulated time correlation functions from the simulation trajectory.
+<figure>
+	<img src="images/tcf_panel_solid_ns_PCA_dashed_inset.png" alt="Comparison of the LE4PD-3N's ability to model the time correlation functions from simulation (black) for a sampling of residues along the primary sequence of ubiquitin with (blue) and without (red) hydrodynamic interactions included. Either method is generally superior to PCA (cyan), which decays too quickly because it does not properly account for the decay timescales along each moded because it neglects free-energy barriers." class="image2" height="800" width="400"/>
+	<figcaption>Figure 2. Comparison of the LE4PD-3N's ability to model the time correlation functions from simulation (black) for a sampling of residues along the primary sequence of ubiquitin with (blue) and without (red) hydrodynamic interactions included. Either method is generally superior to PCA (cyan), which decays too quickly because it does not properly account for the decay timescales along each moded because it neglects free-energy barriers.</figcaption>
+</figure><br><br>
+<p> The study comparing the LE4PD-3N method with PCA for modeling the dynamics of ubiquitin was followed up by a study comparing the results of the LE4PD-3N method to the time-lagged extension of PCA, <a href="https://aip.scitation.org/doi/abs/10.1063/1.4811489">tICA</a>. <a href="https://aip.scitation.org/doi/abs/10.1063/5.0059688">We performed a detailed comparison of the predicted slow mode dynamics and kinetics between the two approaches</a> and found that the LE4PD-3N is slightly more robust at predicting the dynamics due to its lack of the lagtime parameter present in tICA. However, if the lagtime in tICA is tuned precisely, it can do very well at predicting the decay of the autocorrelation function in regions of the protein undergoing the slowest dynamical transitions.<figure>
+	<img src="images/tcf_panel_change_lag_tica.png" alt="Comparison of the LE4PD-3N's ability to model the time correlation functions from simulation (black) for a sampling of residues along the primary sequence of ubiquitin. The predictions of the LE4PD-3N is given in blue while the predictions of tICA are given at various lagtimes, with corresponding colors given in each subfigure legend." class="image2" height="800" width="400"/>
+	<figcaption>Figure 3. Comparison of the LE4PD-3N's ability to model the time correlation functions from simulation (black) for a sampling of residues along the primary sequence of ubiquitin. The predictions of the LE4PD-3N is given in blue while the predictions of tICA are given at various lagtimes, with corresponding colors given in each subfigure legend.</figcaption>
+</figure><br><br>
+<h2>Conformational Dynamics of a Single-Stranded DNA Dinucleotide</h2>
+<p> As another application of MSMs to biological systems, we performed long (1 microsecond) simulations of deoxyadenosine dinucleotide (dApdA) in aqueous solution of varying NaCl concentration. The free-energy landscape of the dApdA molecule projected in the two-dimensional space of the radial separation between the nucleobases and the twist angle around this axis was used to as the reduced state space for construction of an MSM that was subsequently coarse-grained using the <a href="https://www.sciencedirect.com/science/article/pii/S0024379504004689">robust Perron cluster-cluster analysis (PCCA+)</a> method. The coarse grained transition matrix dedscribing the conditional transition probabilites among these coarse-grained macrostates was used to interpret the unstacking mechanism as well as its associated timescale. We find that each macrostate defines a physically relevant set of conformations, e.g. right-handed structures, left-handed structures, unstacked, stacked and achiral. The structural statistics in each macrostate was combined with <a href="https://pubs.acs.org/doi/10.1021/j100721a038">Schellman's matrix method</a> to calculate the circular dichroism (CD) spectra for each macrostate. <a href="https://academic.oup.com/nar/article/49/4/1872/6121468">We found</a> that, in agreement with prior conjectures, that the CD spectrum is due almost exclusively to a linear combination of two states. However, in contrast to that conjecture, we found that the CD spewctrum is due mostly to the predominant left- and right-handed states, not a right-handed and unstacked state. Using the average CD from this state gave very similar results to using just the average structure from each macrostate. Thus, we provided a computationally convenient method to extract the relevant metastable states, a determination of how the conformational diversity of dApdA contributes to its CD spectrum, and postulate a mechanism, including the associated kinetics, for the unstacking transition of this simple nucleic acid system.<br><br>
+<figure>
+	<img src="images/dApdA_square.png" alt="Summary of dApdA research" class="image1" height="500" width="800"/>
+	<figcaption>Figure 4. a) Schematic of the system, dApdA dinucleotide in a 0.1 M solution of NaCl. b) Definition of the coarse-grained variable important for describing the dynamics of the dApdA system. c) The free-energy landsapce in the (R, &Phi;) space defined in b). Outlined and labeled are the five macrostates found through PCCA+ on the trajectory. The right-handed, B-DNA conformation is highlighted with a white box, and the heavy-populated achiral state minimum is highlighted with a red box. d) Structures sampled from the simulation with the lowest heavy-atom root-mean-squared displacement to the average structure of the indicated macrostate. Although not shown, only calculating the CD using these structures is sufficient to give a good estimation of the CD spectrum found using the statistics from the entire MD trajectory.</figcaption>
+</figure><br><br>
+<h2>Machine Learning and Rare Events</h2>
+Currently, I am a postdoctoral associate in <a href="https://sites.google.com/site/pratyushtiwary/">Pratyush Tiwary's lab</a> at the University of Maryland. While here, my research has focused mainly on two fairly disparate topics: developing a rough version of energy-entropy disentanglement in a low-dimensional latent space discovered through a generative machine learning technique called the <a href="https://aip.scitation.org/doi/10.1063/5.0038198">state predictive information bottleneck (SPIB) </a> and using this SPIB method to find good reaction coordinates (RCs) for the <a href="https://www.pnas.org/doi/abs/10.1073/pnas.2216099120">nucleation of organic molecules from aqueous solution</a>. To our knowledge, the biased simulations analyzed in this work are the first to sample nucleation of glycine monomers from solution without the use of seeded MD approaches.
+<figure>
+	<img src="videos/movie_cropped.gif" alt="Movie showing glycine nucleation from solution" class="image1" height="500" width="600"/>
+	<figcaption>Video 1. Reversible nucleation of glycine in water from a simulation biased along the optimzied SPIB RCs.</figcaption>
+</figure><br><br>
+<p>While I have studied some nucleation phenomena while at UMD, my focus to date has been on calculating the thermodynamic profiles of RCs learned using the SPIB approach. One of my recent projects has focused on determining good RCs for the unbinding of two model hydrophobic ligands, a united-atom methane particle and a C60 buckyball fullerene, from rigid, hydrophobic pockets. From this analysis, we confirm that a thermodynamically-optimized, one-dimensional RC for the unbinding for both the methane and buckyball involves surmounting an entropy barrier to unbind, with energetic considerations playing a minor role. Furthermore, we find that solute wetness is the main driver of methane dissociation while pocket wetness plays a major role for the buckyball system until the transition state, after which solute wetness dominates the RC. These observations should yield transferable knowledge to the important features describing ligand unbinding in more complication and physiologically relevant systems, such as drug-protein interactions. This study is published in the <a href="https://pubs.acs.org/doi/full/10.1021/acs.jpcb.3c08304"><em>Journal of Physical Chemistry B</em></a>. <a href="https://arxiv.org/abs/2310.03819">A preprint is available on the arXiv.</a>
+<figure>
+        <img src="videos/buckyball_movie.gif" alt="Movie showing the reversible binding-unbinding of a buckyball from a rigid, hydrophobic pocket in water" class="image1" height="500" width="400"/>
+        <figcaption>Video 2. Reversible binding-unbinding in the buckyball simulation when biased along the z-coordinate from the center-of-mass of the pocket.</figcaption>
+</figure><br><br>
+<figure>
+        <img src="images/fullerene_structures_entropy_profile.png" alt="Optimized entropy profile along the learned SPIB RC. Representative structures at the bound state, barrier top, and unbound states are shown. Error bars are calculated by dividing the trajectory into four blocks and using block averaging." class="image1" height="500" width="700"/>
+        <figcaption>Figure 5. Optimized entropy profile along the learned SPIB RC. Representative structures at the bound state, barrier top, and unbound states are shown. Error bars are calculated by dividing the trajectory into four blocks and using block averaging. </figcaption>
+</figure><br><br>
+
+<h2>
+<a href="index.html">Back to Homepage</a>
+</h2>
+</body>
+</HTML>

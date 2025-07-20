@@ -1,0 +1,61 @@
+<HTML>
+    <head>
+        <style>
+            figure {
+                border: thin #c0c0c0 solid;
+                display: flex;
+                flex-flow: column;
+                padding: 5px;
+                max-width: 1010px;
+                max-height: 610px;
+                margin: auto;
+            }
+    
+            .image1 {
+                border: thin #c0c0c0 solid;
+                display: flex;
+                flex-flow: column;
+                padding: 5px;
+                max-width: 1010px;
+                max-height: 610px;
+                margin: auto;
+            }
+    
+            .image2 {
+                border: thin #c0c0c0 solid;
+                display: flex;
+                flex-flow: column;
+                padding: 5px;
+                max-width: 810px;
+                max-height: 410px;
+                margin: auto;
+            }
+    
+            img {
+                max-width: 1000px;
+                max-height: 600px;
+            }
+    
+            figcaption {
+                background-color: #222;
+                color: #fff;
+                font: italic smaller sans-serif;
+                padding: 3px;
+                text-align: center;
+            }
+    
+        </style>
+        <title>Research?</title>
+    </head>
+    <body style='margin-top:0;margin-left:200;margin-right:200;'>
+<p> As another application of MSMs to biological systems, we performed long (1 microsecond) simulations of deoxyadenosine dinucleotide (dApdA) in aqueous solution of varying NaCl concentration. The free-energy landscape of the dApdA molecule projected in the two-dimensional space of the radial separation between the nucleobases and the twist angle around this axis was used to as the reduced state space for construction of an MSM that was subsequently coarse-grained using the <a href="https://www.sciencedirect.com/science/article/pii/S0024379504004689">robust Perron cluster-cluster analysis (PCCA+)</a> method. The coarse grained transition matrix dedscribing the conditional transition probabilites among these coarse-grained macrostates was used to interpret the unstacking mechanism as well as its associated timescale. We find that each macrostate defines a physically relevant set of conformations, e.g. right-handed structures, left-handed structures, unstacked, stacked and achiral. The structural statistics in each macrostate was combined with <a href="https://pubs.acs.org/doi/10.1021/j100721a038">Schellman's matrix method</a> to calculate the circular dichroism (CD) spectra for each macrostate. <a href="https://academic.oup.com/nar/article/49/4/1872/6121468">We found</a> that, in agreement with prior conjectures, that the CD spectrum is due almost exclusively to a linear combination of two states. However, in contrast to that conjecture, we found that the CD spewctrum is due mostly to the predominant left- and right-handed states, not a right-handed and unstacked state. Using the average CD from this state gave very similar results to using just the average structure from each macrostate. Thus, we provided a computationally convenient method to extract the relevant metastable states, a determination of how the conformational diversity of dApdA contributes to its CD spectrum, and postulate a mechanism, including the associated kinetics, for the unstacking transition of this simple nucleic acid system.<br><br>
+    <figure>
+        <img src="images/dApdA_square.png" alt="Summary of dApdA research" class="image1" height="500" width="800"/>
+        <figcaption>Figure 1. a) Schematic of the system, dApdA dinucleotide in a 0.1 M solution of NaCl. b) Definition of the coarse-grained variable important for describing the dynamics of the dApdA system. c) The free-energy landsapce in the (R, &Phi;) space defined in b). Outlined and labeled are the five macrostates found through PCCA+ on the trajectory. The right-handed, B-DNA conformation is highlighted with a white box, and the heavy-populated achiral state minimum is highlighted with a red box. d) Structures sampled from the simulation with the lowest heavy-atom root-mean-squared displacement to the average structure of the indicated macrostate. Although not shown, only calculating the CD using these structures is sufficient to give a good estimation of the CD spectrum found using the statistics from the entire MD trajectory.</figcaption>
+    </figure><br><br>
+</p>
+<h2>
+    <a href="research.html">Back to Research page</a>
+</h2>
+</body>
+</HTML>

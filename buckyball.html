@@ -1,0 +1,71 @@
+<HTML>
+    <head>
+        <style>
+            figure {
+                border: thin #c0c0c0 solid;
+                display: flex;
+                flex-flow: column;
+                padding: 5px;
+                max-width: 1010px;
+                max-height: 610px;
+                margin: auto;
+            }
+    
+            .image1 {
+                border: thin #c0c0c0 solid;
+                display: flex;
+                flex-flow: column;
+                padding: 5px;
+                max-width: 1010px;
+                max-height: 610px;
+                margin: auto;
+            }
+    
+            .image2 {
+                border: thin #c0c0c0 solid;
+                display: flex;
+                flex-flow: column;
+                padding: 5px;
+                max-width: 810px;
+                max-height: 410px;
+                margin: auto;
+            }
+    
+            img {
+                max-width: 1000px;
+                max-height: 600px;
+            }
+    
+            figcaption {
+                background-color: #222;
+                color: #fff;
+                font: italic smaller sans-serif;
+                padding: 3px;
+                text-align: center;
+            }
+    
+        </style>
+        <title>Research?</title>
+    </head>
+    <body style='margin-top:0;margin-left:200;margin-right:200;'>
+<p>
+While a postdoctoral associate in <a href="https://sites.google.com/site/pratyushtiwary/">Pratyush Tiwary's lab</a> at the University of Maryland, my research mainly focused on two fairly disparate topics: developing a rough version of energy-entropy disentanglement in a low-dimensional latent space discovered through a generative machine learning technique called the <a href="https://aip.scitation.org/doi/10.1063/5.0038198">state predictive information bottleneck (SPIB) </a> and using this SPIB method to find good reaction coordinates (RCs) for the <a href="https://www.pnas.org/doi/abs/10.1073/pnas.2216099120">nucleation of organic molecules from aqueous solution</a>. To our knowledge, the biased simulations analyzed in this work are the first to sample nucleation of glycine monomers from solution without the use of seeded MD approaches.
+<figure>
+    <img src="videos/movie_cropped.gif" alt="Movie showing glycine nucleation from solution" class="image1" height="500" width="600"/>
+    <figcaption>Video 1. Reversible nucleation of glycine in water from a simulation biased along the optimzied SPIB RCs.</figcaption>
+</figure><br><br>
+<p>While I have studied some nucleation phenomena while at UMD, my focus to date has been on calculating the thermodynamic profiles of RCs learned using the SPIB approach. One of my recent projects has focused on determining good RCs for the unbinding of two model hydrophobic ligands, a united-atom methane particle and a C60 buckyball fullerene, from rigid, hydrophobic pockets. From this analysis, we confirm that a thermodynamically-optimized, one-dimensional RC for the unbinding for both the methane and buckyball involves surmounting an entropy barrier to unbind, with energetic considerations playing a minor role. Furthermore, we find that solute wetness is the main driver of methane dissociation while pocket wetness plays a major role for the buckyball system until the transition state, after which solute wetness dominates the RC. These observations should yield transferable knowledge to the important features describing ligand unbinding in more complication and physiologically relevant systems, such as drug-protein interactions. This study is published in the <a href="https://pubs.acs.org/doi/full/10.1021/acs.jpcb.3c08304"><em>Journal of Physical Chemistry B</em></a>. <a href="https://arxiv.org/abs/2310.03819">A preprint is available on the arXiv.</a>
+<figure>
+        <img src="videos/buckyball_movie.gif" alt="Movie showing the reversible binding-unbinding of a buckyball from a rigid, hydrophobic pocket in water" class="image1" height="500" width="400"/>
+        <figcaption>Video 2. Reversible binding-unbinding in the buckyball simulation when biased along the z-coordinate from the center-of-mass of the pocket.</figcaption>
+</figure><br><br>
+<figure>
+        <img src="images/fullerene_structures_entropy_profile.png" alt="Optimized entropy profile along the learned SPIB RC. Representative structures at the bound state, barrier top, and unbound states are shown. Error bars are calculated by dividing the trajectory into four blocks and using block averaging." class="image1" height="500" width="700"/>
+        <figcaption>Figure 1. Optimized entropy profile along the learned SPIB RC. Representative structures at the bound state, barrier top, and unbound states are shown. Error bars are calculated by dividing the trajectory into four blocks and using block averaging. </figcaption>
+</figure><br><br>
+</p>
+<h2>
+    <a href="research.html">Back to Research page</a>
+</h2>
+</body>
+</HTML>
